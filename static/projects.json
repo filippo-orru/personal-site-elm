@@ -1,0 +1,20 @@
+[
+    {
+        "name": "first",
+        "visible": false,
+        "local": {
+            "en": {
+                "description": "description",
+                "long_desc": "looooooooooooooooooong desc"
+            },
+            "de": {
+                "description": "beschreibung",
+                "long_desc": "laaaange besch."
+            }
+        },
+        "images": [
+            "img/img1.png"
+        ],
+        "date": "Feb 2018-Mar 2018"
+    }
+]

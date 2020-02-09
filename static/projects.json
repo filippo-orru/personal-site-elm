@@ -1,20 +1,58 @@
-[
+[{
+        "name": "first",
+        "visible": false,
+        "local": {
+            "en": {
+                "desc": "description",
+                "desc_long": "looooooooooooooooooong desc"
+            },
+            "de": {
+                "desc": "beschreibung",
+                "desc_long": "laaaange besch."
+            }
+        },
+        "images": [
+            "img/image_missing.png"
+        ],
+        "date": "Feb 2018-Mar 2018"
+
+    },
+    {
+        "name": "daycare",
+        "visible": true,
+        "local": {
+            "en": {
+                "desc": "An online implementation of my personal paper to-do list. Open to everybody.",
+                "desc_long": "looooooooooooooooooong desc"
+            },
+            "de": {
+                "desc": "Eine digitale Version meines eigenen Todo Systems. Für jeden zugänglich.",
+                "desc_long": "laaaange besch."
+            }
+        },
+        "images": [
+            "img/daycare/1.png"
+        ],
+        "date": "Feb 2018-Mar 2018"
+
+    },
     {
         "name": "first",
         "visible": false,
         "local": {
             "en": {
-                "description": "description",
-                "long_desc": "looooooooooooooooooong desc"
+                "desc": "description",
+                "desc_long": "looooooooooooooooooong desc"
             },
             "de": {
-                "description": "beschreibung",
-                "long_desc": "laaaange besch."
+                "desc": "beschreibung",
+                "desc_long": "laaaange besch."
             }
         },
         "images": [
-            "img/img1.png"
+            "img/image_missing.png"
         ],
         "date": "Feb 2018-Mar 2018"
+
     }
 ]

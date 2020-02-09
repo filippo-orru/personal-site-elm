@@ -1,0 +1,102 @@
+* {
+    font-family: 'Asap', sans-serif;
+}
+
+
+body {
+    /* width: 80%; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+body:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-color: #fff;
+    background-image: url('img/topography.svg');
+    opacity: 0.04;
+    background-size: 40%;
+    background-repeat: repeat;
+}
+
+.body-wrapper {
+
+    width: 80%;
+    border: 1px solid #000;
+}
+
+.body {}
+
+.header {
+    width: 100%;
+    color: #e8e8e8;
+    background-color: rgb(12, 14, 29);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.205);
+    box-sizing: border-box;
+    margin-bottom: 24px;
+    /* } */
+
+    /* .header:after { */
+    /* content: ""; */
+    /* display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1; */
+    width: 100%;
+    height: 100%;
+    /* background-color: #fff;*/
+    background-image: url('img/plus.svg');
+    /* opacity: 0.3; */
+    background-size: 40px;
+    background-repeat: repeat;
+}
+
+.header-name {
+    font-size: 48pt;
+}
+
+.switch-lang-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    color: rgba(226, 226, 226, 0.884);
+
+    padding: 6px 8px;
+    border: none;
+    background: rgba(255, 255, 255, 0.055);
+    border: 2px solid #eee;
+    border-radius: 6px;
+}
+
+.project {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    height: 160px;
+    margin: 20px;
+}
+
+.project-cover {
+    width: 30%;
+    /* max-width: 70px; */
+    max-height: 100%;
+    object-fit: cover;
+}
+
+.project-body {
+    padding: 16px;
+}
+
+img {
+    display: block;
+    width: auto;
+    height: auto;
+}

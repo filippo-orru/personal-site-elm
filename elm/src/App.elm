@@ -47,10 +47,13 @@ view model =
     in
     { title = "Filippo Orru"
     , body =
-        [ div [ class "header" ]
-            [ h1 [ class "header-name" ] [ text "Filippo Orru" ]
-            , h2 [ class "header-text" ] [ text all.headerText ]
-            , button [ class "switch-lang-btn", onClick SwitchLang ] [ text all.switchLangBtn ]
+        [ div [ class "header-wrapper" ]
+            [ div [ class "header unselectable" ]
+                [ h1 [ class "header-name" ] [ text "Filippo Orru" ]
+                , h2 [ class "header-text" ] [ text all.headerText ]
+                , button [ class "switch-lang-btn", onClick SwitchLang ] [ text all.switchLangBtn ]
+                ]
+            , div [ class "header-bg" ] []
             ]
         , div [ class "body-wrapper" ]
             [ div [ class "body" ]

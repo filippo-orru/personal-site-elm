@@ -1,4 +1,5 @@
-[{
+[
+    {
         "name": "first",
         "visible": false,
         "local": {
@@ -15,7 +16,24 @@
             "img/image_missing.png"
         ],
         "date": "Feb 2018-Mar 2018"
-
+    },
+    {
+        "name": "Personal Website",
+        "visible": true,
+        "local": {
+            "en": {
+                "desc": "I wrote this website using elm in just a few days.",
+                "desc_long": ""
+            },
+            "de": {
+                "desc": "Ich habe diese Website innerhalb weniger Tage geplant und umgesetzt.",
+                "desc_long": ""
+            }
+        },
+        "images": [
+            "img/personal_page/code.png"
+        ],
+        "date": "Feb 2018-Mar 2018"
     },
     {
         "name": "daycare",
@@ -34,7 +52,6 @@
             "img/daycare/1.png"
         ],
         "date": "Feb 2018-Mar 2018"
-
     },
     {
         "name": "first",
@@ -53,6 +70,5 @@
             "img/image_missing.png"
         ],
         "date": "Feb 2018-Mar 2018"
-
     }
 ]

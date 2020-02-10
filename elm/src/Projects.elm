@@ -50,14 +50,15 @@ view projects lang maybeselected =
                     -1
     in
     [ div [ class "projects" ] <|
-        (List.map (translateProject lang) projects
-            |> List.indexedMap (viewProject open_index)
-        )
+        -- (List.map (translateProject lang) projects
+        List.indexedMap (viewProject open_index lang) projects
+
+    -- )
     ]
 
 
-translateProject : Strings.Lang -> Project -> LocalizedProject
-translateProject lang p =
+localizeProject : Strings.Lang -> Project -> LocalizedProject
+localizeProject lang p =
     let
         local =
             case lang of
@@ -75,18 +76,21 @@ translateProject lang p =
     }
 
 
-viewProject : Int -> Int -> LocalizedProject -> Html msg
-viewProject expanded_index my_index project =
+viewProject : Int -> Strings.Lang -> Int -> Project -> Html msg
+viewProject expanded_index lang my_index project =
     let
+        localProject =
+            localizeProject lang project
+
         expanded =
             expanded_index == my_index
 
         pClass =
             if expanded then
-                "project"
+                "project expanded"
 
             else
-                "project expanded"
+                "project"
 
         imgMissing =
             "/img/image_missing.png"
@@ -98,14 +102,27 @@ viewProject expanded_index my_index project =
 
                 Nothing ->
                     imgMissing
+
+        btnText =
+            if expanded then
+                "collapse"
+
+            else
+                "expand"
     in
-    div [ class pClass ]
-        [ img [ class "project-cover", src imgPath ] []
-        , div [ class "project-body" ]
-            [ h3 [] [ text project.name ]
-            , p [] [ text project.local.desc ]
+    if project.visible then
+        div [ class pClass ]
+            [ img [ class "project-cover", src imgPath ] []
+            , hr [ class "vertical" ] []
+            , div [ class "project-body" ]
+                [ h3 [] [ text localProject.name ]
+                , p [] [ text localProject.local.desc ]
+                , button [ class "expand-btn" ] [ text btnText ]
+                ]
             ]
-        ]
+
+    else
+        text ""
 
 
 getProjects : (Result Http.Error (List Project) -> msg) -> Cmd msg

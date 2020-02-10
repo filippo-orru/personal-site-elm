@@ -19,6 +19,7 @@ type alias Model =
 type Msg
     = SwitchLang
     | GotProjects (Result Http.Error (List Project))
+    | ToggleExpand Int
 
 
 main : Program () Model Msg
@@ -51,20 +52,29 @@ view model =
             [ div [ class "header unselectable" ]
                 [ h1 [ class "header-name" ] [ text "Filippo Orru" ]
                 , h2 [ class "header-text" ] [ text all.headerText ]
-                , button [ class "switch-lang-btn", onClick SwitchLang ] [ text all.switchLangBtn ]
+                , button [ class "switch-lang-btn unselectable", onClick SwitchLang ] [ text all.switchLangBtn ]
                 ]
             , div [ class "header-bg" ] []
             ]
         , div [ class "body-wrapper" ]
             [ div [ class "body" ]
-                (Projects.view
+                [ viewAboutMe all
+                , Projects.view
                     model.projects
+                    ToggleExpand
                     model.lang
                     model.expandedProject
-                )
+                ]
             ]
         ]
     }
+
+
+viewAboutMe : Strings.All -> Html Msg
+viewAboutMe all =
+    div [ class "about-me-short" ]
+        [ p [] [ text all.aboutMe ]
+        ]
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -98,3 +108,10 @@ update msg model =
                             Debug.log "err" e
                     in
                     ( model, Cmd.none )
+
+        ToggleExpand i ->
+            if model.expandedProject == Just i then
+                ( { model | expandedProject = Nothing }, Cmd.none )
+
+            else
+                ( { model | expandedProject = Just i }, Cmd.none )

@@ -1,4 +1,4 @@
-module Strings exposing (Lang(..), all)
+module Strings exposing (All, Lang(..), all, project)
 
 
 type Lang
@@ -10,6 +10,7 @@ type alias All =
     { headerText : String
     , switchLangBtn : String
     , introduction : String
+    , aboutMe : String
     }
 
 
@@ -18,7 +19,39 @@ all lang =
     { headerText = headerText lang
     , switchLangBtn = switchLangBtn lang
     , introduction = introduction lang
+    , aboutMe = aboutMe lang
     }
+
+
+type alias ProjectStrings =
+    { collapse : String
+    , expand : String
+    }
+
+
+project : Lang -> ProjectStrings
+project lang =
+    { collapse = projectCollapse lang
+    , expand = projectExpand lang
+    }
+
+
+projectCollapse lang =
+    case lang of
+        German ->
+            "Schließen"
+
+        English ->
+            "Close"
+
+
+projectExpand lang =
+    case lang of
+        German ->
+            "Details"
+
+        English ->
+            "Read more"
 
 
 headerText : Lang -> String
@@ -49,3 +82,15 @@ introduction lang =
 
         English ->
             "Intro"
+
+
+aboutMe : Lang -> String
+aboutMe lang =
+    case lang of
+        German ->
+            """Ich bin 18 Jahre alt und studiere Informatik in Graz.
+            In meiner Freizeit arbeite ich gern an kleinen Hobbyprojekten."""
+
+        English ->
+            """I'm an 18 year old computer science student living in Graz.
+            In my free time, I like working on my own programming projects."""

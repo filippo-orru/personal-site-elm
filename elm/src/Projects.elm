@@ -3,6 +3,7 @@ module Projects exposing (LocalizedPart, LocalizedProject, Project, decodeProjec
 import Array exposing (Array)
 import Html exposing (..)
 import Html.Attributes exposing (..)
+import Html.Events exposing (onClick)
 import Http
 import Json.Decode as D exposing (Decoder, field)
 import Strings
@@ -38,8 +39,8 @@ type alias LocalizedPart =
     }
 
 
-view : List Project -> Strings.Lang -> Maybe Int -> List (Html msg)
-view projects lang maybeselected =
+view : List Project -> (Int -> msg) -> Strings.Lang -> Maybe Int -> Html msg
+view projects tgl_expand_msg lang maybeselected =
     let
         open_index =
             case maybeselected of
@@ -49,12 +50,13 @@ view projects lang maybeselected =
                 Nothing ->
                     -1
     in
-    [ div [ class "projects" ] <|
-        -- (List.map (translateProject lang) projects
-        List.indexedMap (viewProject open_index lang) projects
+    div [ class "projects" ] <|
+        [ a [ class "body-heading unselectable", href "/#projects" ] [ text "Projects" ] ]
+            ++ List.indexedMap (viewProject open_index tgl_expand_msg lang) projects
 
-    -- )
-    ]
+
+
+-- )
 
 
 localizeProject : Strings.Lang -> Project -> LocalizedProject
@@ -76,11 +78,14 @@ localizeProject lang p =
     }
 
 
-viewProject : Int -> Strings.Lang -> Int -> Project -> Html msg
-viewProject expanded_index lang my_index project =
+viewProject : Int -> (Int -> msg) -> Strings.Lang -> Int -> Project -> Html msg
+viewProject expanded_index toggle_expand_msg lang my_index project =
     let
         localProject =
             localizeProject lang project
+
+        localizedStrings =
+            Strings.project lang
 
         expanded =
             expanded_index == my_index
@@ -105,19 +110,28 @@ viewProject expanded_index lang my_index project =
 
         btnText =
             if expanded then
-                "collapse"
+                localizedStrings.collapse
 
             else
-                "expand"
+                localizedStrings.expand
+
+        maybeMoreDesc =
+            if expanded then
+                p [ class "desc-long" ] [ text localProject.local.desc_long ]
+
+            else
+                text ""
     in
     if project.visible then
         div [ class pClass ]
             [ img [ class "project-cover", src imgPath ] []
-            , hr [ class "vertical" ] []
-            , div [ class "project-body" ]
+
+            -- , hr [ class "vertical" ] []
+            , div [ class "project-body", onClick (toggle_expand_msg my_index) ]
                 [ h3 [] [ text localProject.name ]
                 , p [] [ text localProject.local.desc ]
-                , button [ class "expand-btn" ] [ text btnText ]
+                , maybeMoreDesc
+                , a [ class "expand-btn" ] [ text btnText ]
                 ]
             ]
 

@@ -1,5 +1,4 @@
-[
-    {
+[{
         "name": "first",
         "visible": false,
         "local": {
@@ -33,7 +32,25 @@
         "images": [
             "img/personal_page/code.png"
         ],
-        "date": "Feb 2018-Mar 2018"
+        "date": "Feb 2020"
+    },
+    {
+        "name": "Usiwatch",
+        "visible": true,
+        "local": {
+            "en": {
+                "desc": "A searchengine for the sports courses of the university of Graz with email notifications.",
+                "desc_long": "loong"
+            },
+            "de": {
+                "desc": "Eine Suchmaschine für Sportkurse der Uni Graz mit Email-Benachrichtigungen.",
+                "desc_long": "langeeee"
+            }
+        },
+        "images": [
+            "img/usiwatch/home.png"
+        ],
+        "date": "Nov 2019"
     },
     {
         "name": "daycare",
@@ -51,7 +68,7 @@
         "images": [
             "img/daycare/1.png"
         ],
-        "date": "Feb 2018-Mar 2018"
+        "date": "Feb 2018-Mar 2019"
     },
     {
         "name": "first",

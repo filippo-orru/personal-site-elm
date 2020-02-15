@@ -133,13 +133,13 @@ body:after {
     background-color: rgba(255, 255, 255, 0.08);
 }
 
-.about-me-short {
+/*.about-me-short {
     background-color: #fff;
     padding: 18px 16px;
     border-left: 5px solid #010628;
     border-right: 5px solid #010628;
     margin: 12px 0;
-}
+}*/
 
 .body-heading {
     display: block;

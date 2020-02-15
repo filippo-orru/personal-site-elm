@@ -51,8 +51,8 @@ view model =
         [ div [ class "header-wrapper" ]
             [ div [ class "header unselectable" ]
                 [ h1 [ class "header-name" ] [ text "Filippo Orru" ]
-                , h2 [ class "header-text" ] [ text all.headerText ]
-                , button [ class "switch-lang-btn unselectable", onClick SwitchLang ] [ text all.switchLangBtn ]
+                , h2 [ class "header-text" ] [ text all.head.text ]
+                , button [ class "switch-lang-btn unselectable", onClick SwitchLang ] [ text all.head.switchLangBtn ]
                 ]
             , div [ class "header-bg" ] []
             ]
@@ -73,7 +73,8 @@ view model =
 viewAboutMe : Strings.All -> Html Msg
 viewAboutMe all =
     div [ class "about-me-short" ]
-        [ p [] [ text all.aboutMe ]
+        [ a [ class "body-heading unselectable", href "#" ] [ text all.aboutMe.title ]
+        , p [] [ text all.aboutMe.body ]
         ]
 
 

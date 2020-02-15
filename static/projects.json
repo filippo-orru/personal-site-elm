@@ -1,28 +1,11 @@
-[{
-        "name": "first",
-        "visible": false,
-        "local": {
-            "en": {
-                "desc": "description",
-                "desc_long": "looooooooooooooooooong desc"
-            },
-            "de": {
-                "desc": "beschreibung",
-                "desc_long": "laaaange besch."
-            }
-        },
-        "images": [
-            "img/image_missing.png"
-        ],
-        "date": "Feb 2018-Mar 2018"
-    },
+[
     {
         "name": "Personal Website",
         "visible": true,
         "local": {
             "en": {
-                "desc": "I wrote this website using elm in just a few days.",
-                "desc_long": ""
+                "desc": "I wrote this website from scratch in just a few days.",
+                "desc_long": "# I used a simple combination of Elm, \n ## Lol"
             },
             "de": {
                 "desc": "Ich habe diese Website innerhalb weniger Tage geplant und umgesetzt.",

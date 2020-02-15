@@ -6,6 +6,7 @@ import Html.Attributes exposing (..)
 import Html.Events exposing (onClick)
 import Http
 import Json.Decode as D exposing (Decoder, field)
+import Markdown exposing (toHtml)
 import Strings
 
 
@@ -51,12 +52,8 @@ view projects tgl_expand_msg lang maybeselected =
                     -1
     in
     div [ class "projects" ] <|
-        [ a [ class "body-heading unselectable", href "/#projects" ] [ text "Projects" ] ]
+        [ a [ class "body-heading unselectable", name "projects", href "#projects" ] [ text <| (Strings.all lang).project.title ] ]
             ++ List.indexedMap (viewProject open_index tgl_expand_msg lang) projects
-
-
-
--- )
 
 
 localizeProject : Strings.Lang -> Project -> LocalizedProject
@@ -85,7 +82,7 @@ viewProject expanded_index toggle_expand_msg lang my_index project =
             localizeProject lang project
 
         localizedStrings =
-            Strings.project lang
+            Strings.projectStrings lang
 
         expanded =
             expanded_index == my_index
@@ -117,7 +114,8 @@ viewProject expanded_index toggle_expand_msg lang my_index project =
 
         maybeMoreDesc =
             if expanded then
-                p [ class "desc-long" ] [ text localProject.local.desc_long ]
+                -- div [ class "desc-long" ] [
+                localProject.local.desc_long |> toHtml [ class "desc-long" ]
 
             else
                 text ""

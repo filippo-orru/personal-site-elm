@@ -1,4 +1,4 @@
-module Strings exposing (All, Lang(..), all, project)
+module Strings exposing (All, Lang(..), all, projectStrings)
 
 
 type Lang
@@ -7,81 +7,62 @@ type Lang
 
 
 type alias All =
-    { headerText : String
-    , switchLangBtn : String
-    , introduction : String
-    , aboutMe : String
+    { head : HeadStrings
+    , aboutMe : AboutMeStrings
+    , project : ProjectStrings
     }
 
 
 all : Lang -> All
 all lang =
-    { headerText = headerText lang
-    , switchLangBtn = switchLangBtn lang
-    , introduction = introduction lang
-    , aboutMe = aboutMe lang
+    { head = headStrings lang
+    , aboutMe = aboutMeStrings lang
+    , project = projectStrings lang
     }
 
 
-type alias ProjectStrings =
-    { collapse : String
-    , expand : String
+type alias HeadStrings =
+    { text : String
+    , switchLangBtn : String
     }
 
 
-project : Lang -> ProjectStrings
-project lang =
-    { collapse = projectCollapse lang
-    , expand = projectExpand lang
+headStrings : Lang -> HeadStrings
+headStrings lang =
+    let
+        ( text, switchLangBtn ) =
+            case lang of
+                German ->
+                    ( "Persönliche Websites und Onlineshops für Kleinunternehmen und Privatpersonen", "English" )
+
+                English ->
+                    ( "Personal Websites and Online Shops for small businesses and individuals", "Deutsch" )
+    in
+    { text = text
+    , switchLangBtn = switchLangBtn
     }
 
 
-projectCollapse lang =
-    case lang of
-        German ->
-            "Schließen"
-
-        English ->
-            "Close"
+type alias AboutMeStrings =
+    { title : String
+    , body : String
+    }
 
 
-projectExpand lang =
-    case lang of
-        German ->
-            "Details"
+aboutMeStrings : Lang -> AboutMeStrings
+aboutMeStrings lang =
+    let
+        title =
+            case lang of
+                German ->
+                    "Über mich"
 
-        English ->
-            "Read more"
-
-
-headerText : Lang -> String
-headerText lang =
-    case lang of
-        German ->
-            "Persönliche Websites und Onlineshops für Kleinunternehmen und Privatpersonen"
-
-        English ->
-            "Personal Websites and Online Shops for small businesses and individuals"
-
-
-switchLangBtn : Lang -> String
-switchLangBtn lang =
-    case lang of
-        German ->
-            "English"
-
-        English ->
-            "Deutsch"
-
-
-introduction : Lang -> String
-introduction lang =
-    case lang of
-        German ->
-            "Introduktion!"
-
-        English ->
-            "Intro"
+                English ->
+                    "About me"
+    in
+    { title = title
+    , body = aboutMe lang
+    }
 
 
 aboutMe : Lang -> String
@@ -94,3 +75,27 @@ aboutMe lang =
         English ->
             """I'm an 18 year old computer science student living in Graz.
             In my free time, I like working on my own programming projects."""
+
+
+type alias ProjectStrings =
+    { title : String
+    , collapse : String
+    , expand : String
+    }
+
+
+projectStrings : Lang -> ProjectStrings
+projectStrings lang =
+    let
+        ( title, collapse, expand ) =
+            case lang of
+                German ->
+                    ( "Projekte", "Schließen", "Details" )
+
+                English ->
+                    ( "Projects", "Close", "Read more" )
+    in
+    { title = title
+    , collapse = collapse
+    , expand = expand
+    }

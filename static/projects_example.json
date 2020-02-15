@@ -1,0 +1,20 @@
+[
+    {
+        "name": "example",
+        "visible": false,
+        "local": {
+            "en": {
+                "desc": "description",
+                "desc_long": "# Looooooooooooooooooong desc. use markdown here"
+            },
+            "de": {
+                "desc": "beschreibung",
+                "desc_long": "laaaange besch."
+            }
+        },
+        "images": [
+            "img/image_missing.png"
+        ],
+        "date": "Feb 2018-Mar 2018"
+    }
+]
